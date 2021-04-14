@@ -1,6 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
 const campsiteRouter = require('./routes/campsiteRouter');
+// const indexRouter = require('./routes/index');
+const promotionsRouter = require('./routes/promotionsRouter');
+const partnersRouter = require('./routes/partnersRouter');
 
 const hostname = 'localhost';
 const port = 3000;
@@ -8,8 +11,13 @@ const port = 3000;
 const app = express();
 app.use(morgan('dev'));
 app.use(express.json());
+// entire string is called url or uri or endpoint
+//hostname port route route-parameter
+// localhost:3000/promotions/:promotionId
 
 app.use('/campsites', campsiteRouter);
+app.use('/promotions', promotionsRouter);
+app.use('/partners', partnersRouter);
 
 app.use(express.static(__dirname + '/public'));
 
